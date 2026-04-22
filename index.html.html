@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Faceless YouTube & AI Content Mastery — Kuyik Bassey</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --purple: #7C3AED;
+    --purple-light: #A78BFA;
+    --purple-dark: #4C1D95;
+    --teal: #06D6A0;
+    --teal-dark: #059669;
+    --gold: #F59E0B;
+    --gold-light: #FDE68A;
+    --dark: #0A0A0F;
+    --dark2: #12121A;
+    --dark3: #1A1A2E;
+    --gray: #6B7280;
+    --light: #F9FAFB;
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events:none; z-index:0; opacity:0.4;
+  }
+
+  /* ════════════════════════════
+     COURSE COVER / HERO
+  ════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 40px 20px;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 90% 80%, rgba(6,214,160,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 10% 60%, rgba(245,158,11,0.1) 0%, transparent 60%),
+      linear-gradient(180deg, #0A0A0F 0%, #12121A 100%);
+  }
+
+  /* Grid lines */
+  .hero-bg::after {
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(124,58,237,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,58,237,0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  }
+
+  /* Floating orbs */
+  .orb {
+    position:absolute;
+    border-radius:50%;
+    filter: blur(60px);
+    animation: float 8s ease-in-out infinite;
+  }
+  .orb1 { width:300px; height:300px; background:rgba(124,58,237,0.3); top:-100px; right:-80px; animation-delay:0s; }
+  .orb2 { width:200px; height:200px; background:rgba(6,214,160,0.2); bottom:100px; left:-60px; animation-delay:-3s; }
+  .orb3 { width:150px; height:150px; background:rgba(245,158,11,0.15); top:40%; right:10%; animation-delay:-5s; }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+  }
+
+  .hero-content {
+    position: relative; z-index:2;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  /* COVER BADGE */
+  .cover-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124,58,237,0.2);
+    border: 1px solid rgba(124,58,237,0.5);
+    border-radius: 100px;
+    padding: 6px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--purple-light);
+    margin-bottom: 28px;
+    animation: fadeDown 0.8s ease both;
+  }
+  .cover-badge .dot {
+    width:6px; height:6px;
+    border-radius:50%;
+    background: var(--teal);
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
+
+  /* MAIN TITLE */
+  .hero-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(52px, 10vw, 96px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+  .title-line1 { display:block; color: var(--white); }
+  .title-line2 {
+    display:block;
+    background: linear-gradient(135deg, var(--purple-light), var(--teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .title-line3 { display:block; color: var(--gold); }
+
+  /* TAGLINE */
+  .hero-tagline {
+    font-size: clamp(15px, 2.5vw, 19px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 32px;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+  .hero-tagline strong { color: var(--teal); font-weight: 700; }
+
+  /* PRICE PILL */
+  .price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 36px;
+    animation: fadeUp 0.8s ease 0.5s both;
+    flex-wrap: wrap;
+  }
+  .price-pill {
+    background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+    border: 1px solid rgba(167,139,250,0.4);
+    border-radius: 100px;
+    padding: 10px 28px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .price-pill .old { text-decoration: line-through; opacity: 0.5; margin-right:6px; }
+  .price-pill .new { color: var(--gold); font-size: 20px; }
+  .price-pill .seats {
+    font-size: 10px;
+    color: var(--teal);
+    display:block;
+    text-align:center;
+    margin-top:2px;
+    letter-spacing:1px;
+  }
+
+  /* COVER CTA */
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+    color: var(--dark);
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 16px 44px;
+    border-radius: 100px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 40px rgba(6,214,160,0.3);
+    animation: fadeUp 0.8s ease 0.6s both;
+    cursor: pointer;
+    border: none;
+  }
+  .cta-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 0 60px rgba(6,214,160,0.5); }
+
+  /* Trust row */
+  .trust-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.7s both;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+  }
+  .trust-item span { color: var(--teal); font-size: 14px; }
+
+  /* COVER MOCKUP */
+  .cover-mockup {
+    position: relative;
+    margin: 60px auto 0;
+    max-width: 340px;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+  .mockup-card {
+    background: linear-gradient(135deg, var(--dark3) 0%, #0F0F1E 100%);
+    border: 1px solid rgba(124,58,237,0.4);
+    border-radius: 20px;
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(124,58,237,0.2);
+  }
+  .mockup-card::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--purple), var(--teal), var(--gold));
+  }
+  .mockup-by { font-size:10px; letter-spacing:2px; text-transform:uppercase; color: var(--teal); margin-bottom:10px; }
+  .mockup-title { font-family:'Bebas Neue'; font-size:32px; line-height:1; color:var(--white); margin-bottom:6px; }
+  .mockup-sub { font-size:11px; color:rgba(255,255,255,0.5); margin-bottom:20px; }
+  .mockup-days {
+    display:flex; gap:8px; margin-bottom:20px;
+  }
+  .mockup-day {
+    flex:1;
+    background: rgba(124,58,237,0.15);
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 8px;
+    padding: 8px 4px;
+    text-align:center;
+    font-size:10px;
+    font-weight:700;
+    color: var(--purple-light);
+  }
+  .mockup-day span { display:block; font-size:16px; color:var(--white); font-family:'Bebas Neue'; }
+  .mockup-author {
+    display:flex; align-items:center; gap:10px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top:16px;
+  }
+  .author-avatar {
+    width:36px; height:36px; border-radius:50%;
+    background: linear-gradient(135deg, var(--purple), var(--teal));
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:13px;
+  }
+  .author-name { font-size:12px; font-weight:700; }
+  .author-handle { font-size:10px; color:var(--teal); }
+  .mockup-badge {
+    position:absolute; top:16px; right:16px;
+    background: var(--gold);
+    color: var(--dark);
+    font-size:9px; font-weight:800;
+    padding:4px 10px; border-radius:100px;
+    letter-spacing:1px;
+  }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ════════════════════════════
+     SECTION STYLES
+  ════════════════════════════ */
+  section { position:relative; z-index:1; }
+
+  .section-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(32px, 6vw, 52px);
+    line-height: 1.0;
+    margin-bottom: 16px;
+  }
+
+  .section-body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    max-width: 680px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124,58,237,0.4), transparent);
+    margin: 0 24px;
+  }
+
+  /* ════════════════════════════
+     PAIN SECTION
+  ════════════════════════════ */
+  .pain-section { background: var(--dark2); }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .pain-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pain-card::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:2px;
+    background: linear-gradient(90deg, var(--purple), transparent);
+  }
+  .pain-emoji { font-size:28px; margin-bottom:12px; }
+  .pain-text { font-size:14px; line-height:1.6; color:rgba(255,255,255,0.65); }
+  .pain-text strong { color:var(--white); }
+
+  /* ════════════════════════════
+     PROMISE / BIG RESULT
+  ════════════════════════════ */
+  .promise-section {
+    background: linear-gradient(135deg, var(--dark3) 0%, #0F0F1A 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .promise-section::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(124,58,237,0.15) 0%, transparent 70%);
+  }
+  .promise-box {
+    background: rgba(124,58,237,0.1);
+    border: 2px solid rgba(124,58,237,0.4);
+    border-radius: 24px;
+    padding: 48px 40px;
+    text-align: center;
+    position: relative;
+  }
+  .promise-box::before {
+    content:'';
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:60%; height:1px;
+    background: linear-gradient(90deg, transparent, var(--purple-light), transparent);
+  }
+  .promise-quote {
+    font-family:'Bebas Neue';
+    font-size: clamp(22px, 4vw, 36px);
+    line-height:1.2;
+    color:var(--white);
+    margin-bottom:20px;
+  }
+  .promise-quote em { color:var(--teal); font-style:normal; }
+  .promise-sub { font-size:15px; color:rgba(255,255,255,0.6); line-height:1.7; }
+
+  /* ════════════════════════════
+     FOR WHO
+  ════════════════════════════ */
+  .forwho-grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:24px;
+    margin-top:40px;
+  }
+  @media(max-width:600px){ .forwho-grid{grid-template-columns:1fr;} }
+
+  .forwho-card {
+    border-radius:16px;
+    padding:28px 24px;
+  }
+  .forwho-yes {
+    background: rgba(6,214,160,0.07);
+    border: 1px solid rgba(6,214,160,0.25);
+  }
+  .forwho-no {
+    background: rgba(239,68,68,0.05);
+    border: 1px solid rgba(239,68,68,0.2);
+  }
+  .forwho-title {
+    font-size:13px; font-weight:800; letter-spacing:2px;
+    text-transform:uppercase; margin-bottom:16px;
+  }
+  .forwho-yes .forwho-title { color:var(--teal); }
+  .forwho-no .forwho-title { color:#F87171; }
+  .forwho-item {
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:14px; line-height:1.6;
+    color:rgba(255,255,255,0.75);
+    margin-bottom:10px;
+  }
+  .forwho-item .icon { font-size:16px; flex-shrink:0; margin-top:2px; }
+
+  /* ════════════════════════════
+     3-DAY CURRICULUM
+  ════════════════════════════ */
+  .curriculum-section { background:var(--dark2); }
+
+  .days-wrapper {
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    margin-top:40px;
+  }
+
+  .day-card {
+    border-radius:20px;
+    overflow:hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .day-header {
+    padding:24px 28px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+  }
+  .day1-hdr { background: linear-gradient(135deg, #1E3A5F, #152B46); }
+  .day2-hdr { background: linear-gradient(135deg, #3D1F00, #2E1800); }
+  .day3-hdr { background: linear-gradient(135deg, #003D2E, #002E22); }
+
+  .day-number {
+    font-family:'Bebas Neue';
+    font-size:52px;
+    line-height:1;
+    opacity:0.3;
+    flex-shrink:0;
+  }
+  .day1-hdr .day-number { color:#4FC3F7; }
+  .day2-hdr .day-number { color:#FFB74D; }
+  .day3-hdr .day-number { color:#4DB6AC; }
+
+  .day-info {}
+  .day-tag {
+    font-size:10px; font-weight:700; letter-spacing:2px;
+    text-transform:uppercase; margin-bottom:4px;
+  }
+  .day1-hdr .day-tag { color:#4FC3F7; }
+  .day2-hdr .day-tag { color:#FFB74D; }
+  .day3-hdr .day-tag { color:#4DB6AC; }
+
+  .day-title-text { font-family:'Bebas Neue'; font-size:26px; color:var(--white); line-height:1; }
+  .day-sub-text { font-size:13px; color:rgba(255,255,255,0.5); margin-top:4px; }
+
+  .day-modules {
+    background: rgba(255,255,255,0.02);
+    padding:20px 28px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:16px;
+  }
+  @media(max-width:600px){ .day-modules{grid-template-columns:1fr;} }
+
+  .module-item { display:flex; gap:12px; align-items:flex-start; }
+  .module-num {
+    width:28px; height:28px; border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:800; flex-shrink:0;
+  }
+  .day1-num { background:rgba(79,195,247,0.15); color:#4FC3F7; }
+  .day2-num { background:rgba(255,183,77,0.15); color:#FFB74D; }
+  .day3-num { background:rgba(77,182,172,0.15); color:#4DB6AC; }
+
+  .module-text .mod-title { font-size:13px; font-weight:700; color:var(--white); margin-bottom:2px; }
+  .module-text .mod-desc { font-size:11.5px; color:rgba(255,255,255,0.45); line-height:1.5; }
+
+  .day-hw {
+    padding:14px 28px;
+    display:flex; align-items:center; gap:10px;
+    border-top:1px solid rgba(255,255,255,0.05);
+  }
+  .day1-hw { background:rgba(79,195,247,0.05); }
+  .day2-hw { background:rgba(255,183,77,0.05); }
+  .day3-hw { background:rgba(77,182,172,0.05); }
+  .hw-label { font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; }
+  .day1-hw .hw-label { color:#4FC3F7; }
+  .day2-hw .hw-label { color:#FFB74D; }
+  .day3-hw .hw-label { color:#4DB6AC; }
+  .hw-text { font-size:12px; color:rgba(255,255,255,0.6); }
+
+  /* ════════════════════════════
+     BONUSES
+  ════════════════════════════ */
+  .bonus-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap:16px;
+    margin-top:40px;
+  }
+  .bonus-card {
+    background: rgba(255,255,255,0.03);
+    border:1px solid rgba(245,158,11,0.2);
+    border-radius:16px;
+    padding:24px;
+    position:relative;
+  }
+  .bonus-card::before {
+    content:'BONUS';
+    position:absolute; top:-10px; left:20px;
+    background:var(--gold);
+    color:var(--dark);
+    font-size:9px; font-weight:800;
+    padding:3px 10px; border-radius:100px;
+    letter-spacing:1px;
+  }
+  .bonus-emoji { font-size:32px; margin-bottom:12px; }
+  .bonus-title { font-size:15px; font-weight:700; margin-bottom:6px; }
+  .bonus-desc { font-size:13px; color:rgba(255,255,255,0.55); line-height:1.6; margin-bottom:12px; }
+  .bonus-value {
+    font-size:12px; font-weight:800;
+    color:var(--teal);
+    letter-spacing:1px;
+  }
+  .bonus-value s { color:var(--gray); font-weight:400; margin-right:4px; }
+
+  .value-total {
+    background: linear-gradient(135deg, var(--dark3), #0F0F1E);
+    border:2px solid rgba(245,158,11,0.4);
+    border-radius:16px;
+    padding:28px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:24px;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .total-label { font-size:13px; color:rgba(255,255,255,0.5); font-weight:500; }
+  .total-was { font-size:20px; color:var(--gray); text-decoration:line-through; margin-bottom:4px; }
+  .total-price { font-family:'Bebas Neue'; font-size:48px; color:var(--gold); line-height:1; }
+  .total-seats { font-size:12px; color:var(--teal); margin-top:4px; }
+
+  /* ════════════════════════════
+     TESTIMONIAL PLACEHOLDERS
+  ════════════════════════════ */
+  .testi-section { background:var(--dark2); }
+  .testi-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap:16px;
+    margin-top:40px;
+  }
+  .testi-card {
+    background: rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:16px;
+    padding:24px;
+  }
+  .testi-stars { color:var(--gold); font-size:14px; margin-bottom:12px; }
+  .testi-text { font-size:14px; line-height:1.7; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:16px; }
+  .testi-author { display:flex; align-items:center; gap:10px; }
+  .testi-avatar {
+    width:36px; height:36px; border-radius:50%;
+    background:linear-gradient(135deg, var(--purple), var(--teal));
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:13px;
+  }
+  .testi-name { font-size:13px; font-weight:700; }
+  .testi-role { font-size:11px; color:var(--teal); }
+
+  /* ════════════════════════════
+     HOW IT WORKS
+  ════════════════════════════ */
+  .flow-steps {
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    margin-top:40px;
+    position:relative;
+  }
+  .flow-steps::before {
+    content:'';
+    position:absolute; left:23px; top:0; bottom:0;
+    width:2px;
+    background:linear-gradient(180deg, var(--purple), var(--teal));
+  }
+  .flow-step {
+    display:flex; gap:20px; align-items:flex-start;
+    padding-bottom:32px;
+    position:relative;
+  }
+  .step-dot {
+    width:48px; height:48px; border-radius:50%; flex-shrink:0;
+    background:var(--dark3);
+    border:2px solid var(--purple);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Bebas Neue'; font-size:20px; color:var(--purple-light);
+    position:relative; z-index:1;
+  }
+  .step-content {}
+  .step-title { font-size:16px; font-weight:700; margin-bottom:4px; padding-top:10px; }
+  .step-desc { font-size:13.5px; color:rgba(255,255,255,0.55); line-height:1.6; }
+
+  /* ════════════════════════════
+     SALES / PRICING SECTION
+  ════════════════════════════ */
+  .pricing-section {
+    background: linear-gradient(135deg, var(--dark3) 0%, var(--dark) 100%);
+    position:relative; overflow:hidden;
+  }
+  .pricing-section::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(6,214,160,0.08) 0%, transparent 70%);
+  }
+
+  .pricing-card {
+    background: rgba(255,255,255,0.03);
+    border:2px solid rgba(124,58,237,0.5);
+    border-radius:28px;
+    padding:48px 40px;
+    text-align:center;
+    position:relative;
+    max-width:580px;
+    margin:40px auto 0;
+    box-shadow: 0 0 80px rgba(124,58,237,0.15);
+  }
+  .pricing-card::before {
+    content:'MOST POPULAR';
+    position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+    background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+    color:var(--white);
+    font-size:10px; font-weight:800; letter-spacing:2px;
+    padding:5px 20px; border-radius:100px;
+  }
+  .pricing-card::after {
+    content:'';
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:50%; height:1px;
+    background:linear-gradient(90deg,transparent,var(--purple-light),transparent);
+  }
+
+  .pricing-title { font-family:'Bebas Neue'; font-size:28px; margin-bottom:8px; }
+  .pricing-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; }
+
+  .pricing-price {
+    margin-bottom:8px;
+  }
+  .price-was { font-size:16px; color:var(--gray); text-decoration:line-through; }
+  .price-now { font-family:'Bebas Neue'; font-size:72px; color:var(--gold); line-height:1; }
+  .price-note { font-size:12px; color:var(--teal); margin-bottom:28px; }
+
+  .pricing-includes {
+    text-align:left;
+    margin-bottom:32px;
+    border-top:1px solid rgba(255,255,255,0.07);
+    padding-top:24px;
+  }
+  .includes-title { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gray); margin-bottom:14px; }
+  .include-item {
+    display:flex; align-items:center; gap:12px;
+    font-size:14px; color:rgba(255,255,255,0.8);
+    margin-bottom:10px;
+  }
+  .include-item .check {
+    width:20px; height:20px; border-radius:50%;
+    background:rgba(6,214,160,0.15);
+    border:1px solid var(--teal);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--teal); font-size:11px; flex-shrink:0;
+  }
+
+  .cta-btn-large {
+    display:block;
+    background:linear-gradient(135deg, var(--teal), var(--teal-dark));
+    color:var(--dark);
+    font-family:'Outfit',sans-serif;
+    font-size:18px; font-weight:800;
+    padding:20px 40px;
+    border-radius:100px;
+    text-decoration:none;
+    letter-spacing:0.3px;
+    transition:transform 0.2s, box-shadow 0.2s;
+    box-shadow:0 0 50px rgba(6,214,160,0.3);
+    cursor:pointer; border:none; width:100%;
+    margin-bottom:16px;
+  }
+  .cta-btn-large:hover { transform:translateY(-3px); box-shadow:0 0 70px rgba(6,214,160,0.5); }
+
+  .cta-sub { font-size:12px; color:rgba(255,255,255,0.35); }
+
+  .urgency-bar {
+    background:rgba(245,158,11,0.1);
+    border:1px solid rgba(245,158,11,0.3);
+    border-radius:12px;
+    padding:12px 20px;
+    text-align:center;
+    margin-top:16px;
+    font-size:13px;
+    color:var(--gold-light);
+  }
+  .urgency-bar strong { color:var(--gold); }
+
+  /* ════════════════════════════
+     ABOUT
+  ════════════════════════════ */
+  .about-section { background:var(--dark2); }
+  .about-inner {
+    display:grid; grid-template-columns:1fr 2fr; gap:48px; align-items:center;
+    margin-top:40px;
+  }
+  @media(max-width:640px){.about-inner{grid-template-columns:1fr;}}
+  .about-avatar-wrap { text-align:center; }
+  .about-avatar {
+    width:140px; height:140px; border-radius:50%;
+    background:linear-gradient(135deg, var(--purple), var(--teal));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Bebas Neue'; font-size:52px;
+    margin:0 auto 16px;
+    box-shadow:0 0 50px rgba(124,58,237,0.4);
+  }
+  .about-handle { font-size:13px; color:var(--teal); font-weight:700; }
+  .about-platform { font-size:11px; color:var(--gray); }
+  .about-body { font-size:15px; line-height:1.8; color:rgba(255,255,255,0.7); }
+  .about-body strong { color:var(--white); }
+  .about-stats {
+    display:flex; gap:24px; margin-top:24px; flex-wrap:wrap;
+  }
+  .astat { }
+  .astat-num { font-family:'Bebas Neue'; font-size:32px; color:var(--purple-light); }
+  .astat-label { font-size:11px; color:var(--gray); }
+
+  /* ════════════════════════════
+     FAQ
+  ════════════════════════════ */
+  .faq-list { margin-top:40px; display:flex; flex-direction:column; gap:12px; }
+  .faq-item {
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:14px;
+    padding:20px 24px;
+  }
+  .faq-q { font-size:15px; font-weight:700; margin-bottom:8px; color:var(--white); }
+  .faq-a { font-size:14px; color:rgba(255,255,255,0.6); line-height:1.7; }
+
+  /* ════════════════════════════
+     FOOTER CTA
+  ════════════════════════════ */
+  .final-cta {
+    background:linear-gradient(135deg, var(--dark3) 0%, var(--dark) 100%);
+    text-align:center;
+    padding:80px 24px;
+    position:relative; overflow:hidden;
+  }
+  .final-cta::before {
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse 70% 70% at 50% 50%, rgba(124,58,237,0.2) 0%, transparent 70%);
+  }
+  .final-cta-content { position:relative; z-index:1; max-width:600px; margin:0 auto; }
+  .final-cta h2 { font-family:'Bebas Neue'; font-size:clamp(36px,7vw,64px); line-height:1; margin-bottom:16px; }
+  .final-cta p { font-size:16px; color:rgba(255,255,255,0.6); margin-bottom:32px; line-height:1.7; }
+
+  /* ════════════════════════════
+     STICKY CTA BAR
+  ════════════════════════════ */
+  .sticky-bar {
+    position:fixed; bottom:0; left:0; right:0;
+    background:rgba(10,10,15,0.95);
+    backdrop-filter:blur(20px);
+    border-top:1px solid rgba(124,58,237,0.3);
+    padding:12px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    z-index:100;
+    flex-wrap:wrap; gap:12px;
+  }
+  .sticky-info { font-size:14px; font-weight:600; }
+  .sticky-info span { color:var(--teal); }
+  .sticky-btn {
+    background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+    color:var(--dark); font-weight:800; font-size:14px;
+    padding:10px 28px; border-radius:100px;
+    text-decoration:none; white-space:nowrap;
+    transition:transform 0.2s;
+  }
+  .sticky-btn:hover { transform:scale(1.03); }
+
+  /* ════════════════════════════
+     RESPONSIVE
+  ════════════════════════════ */
+  @media(max-width:640px){
+    .section-inner { padding:60px 20px; }
+    .pricing-card { padding:36px 24px; }
+    .price-now { font-size:56px; }
+    .sticky-bar { justify-content:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ STICKY BAR ═══════════ -->
+<div class="sticky-bar">
+  <div class="sticky-info">🔥 <span>Early Bird: $27</span> — First 20 spots only. Price goes to $47 after.</div>
+  <a href="#buy" class="sticky-btn">👉 Join Now — $27</a>
+</div>
+
+<!-- ═══════════ HERO / COVER ═══════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <div class="hero-content">
+    <div class="cover-badge"><span class="dot"></span> 3-Day Live WhatsApp Class — Limited Spots</div>
+
+    <h1 class="hero-title">
+      <span class="title-line1">FACELESS YOUTUBE</span>
+      <span class="title-line2">&amp; AI CONTENT</span>
+      <span class="title-line3">MASTERY</span>
+    </h1>
+
+    <p class="hero-tagline">
+      Start. Grow. Monetize. <strong>Stay Monetized.</strong><br/>
+      All Without Showing Your Face — Using Only <strong>Free AI Tools.</strong>
+    </p>
+
+    <div class="price-row">
+      <div class="price-pill">
+        <span><span class="old">$47</span><span class="new">$27</span></span>
+        <span class="seats">⚡ First 20 spots only</span>
+      </div>
+    </div>
+
+    <a href="#buy" class="cta-btn">👉 Secure Your Spot — $27</a>
+
+    <div class="trust-row">
+      <div class="trust-item"><span>✅</span> No camera needed</div>
+      <div class="trust-item"><span>✅</span> Free AI tools only</div>
+      <div class="trust-item"><span>✅</span> Live + recordings included</div>
+      <div class="trust-item"><span>✅</span> Results in 3 days</div>
+    </div>
+
+    <!-- COURSE MOCKUP CARD -->
+    <div class="cover-mockup">
+      <div class="mockup-card">
+        <div class="mockup-badge">$27 ONLY</div>
+        <div class="mockup-by">BUILD AND BRAND WITH KUYIK</div>
+        <div class="mockup-title">FACELESS YT<br/>&amp; AI MASTERY</div>
+        <div class="mockup-sub">3-Day Live WhatsApp Class</div>
+        <div class="mockup-days">
+          <div class="mockup-day"><span>1</span>Foundation</div>
+          <div class="mockup-day"><span>2</span>AI Content</div>
+          <div class="mockup-day"><span>3</span>Monetize</div>
+        </div>
+        <div class="mockup-author">
+          <div class="author-avatar">KB</div>
+          <div>
+            <div class="author-name">Kuyik Bassey</div>
+            <div class="author-handle">@KuyikBassey</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ PAIN SECTION ═══════════ -->
+<section class="pain-section">
+  <div class="section-inner">
+    <div class="section-label">Sound Familiar?</div>
+    <h2 class="section-title">ARE YOU STUCK IN THIS CYCLE?</h2>
+    <p class="section-body">If any of these hit close to home — this class was built specifically for you.</p>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-emoji">😩</div>
+        <div class="pain-text"><strong>You post videos but get zero views.</strong> You work hard, upload consistently, but the algorithm completely ignores you.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">😰</div>
+        <div class="pain-text"><strong>You're scared of getting demonetized.</strong> You've heard the horror stories and don't know what rules you might accidentally break.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">😔</div>
+        <div class="pain-text"><strong>You don't want to show your face.</strong> But you think faceless channels can't grow or make real money. That's a myth we'll destroy.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">💸</div>
+        <div class="pain-text"><strong>You're wasting money on paid tools.</strong> When there are free AI tools that do the exact same thing — and nobody told you.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">🤯</div>
+        <div class="pain-text"><strong>You don't know where to start.</strong> There's too much information online and none of it gives you a clear step-by-step path.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-emoji">⏰</div>
+        <div class="pain-text"><strong>You have no time to create content.</strong> Editing, scripting and posting manually is burning you out before you even get started.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ PROMISE ═══════════ -->
+<section class="promise-section">
+  <div class="section-inner">
+    <div class="promise-box">
+      <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;">The Big Promise</p>
+      <p class="promise-quote">
+        In just <em>3 days</em>, you will go from having NO channel and NO idea — to having a fully set up <em>faceless YouTube channel</em>, your first <em>AI-created digital product</em>, and a clear monetization strategy — using only <em>FREE tools.</em>
+      </p>
+      <p class="promise-sub">No expensive software. No showing your face. No guessing. Just a proven system taught live by a monetized YouTube creator who has done it himself.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ FOR WHO ═══════════ -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">Is This For Me?</div>
+    <h2 class="section-title">WHO THIS CLASS IS FOR</h2>
+    <div class="forwho-grid">
+      <div class="forwho-card forwho-yes">
+        <div class="forwho-title">✅ This IS For You If...</div>
+        <div class="forwho-item"><span class="icon">🎯</span> You want to start a YouTube channel but don't know where to begin</div>
+        <div class="forwho-item"><span class="icon">🎯</span> You have a channel but it's not growing and you don't know why</div>
+        <div class="forwho-item"><span class="icon">🎯</span> You want to make money online without showing your face</div>
+        <div class="forwho-item"><span class="icon">🎯</span> You want to use AI to save time and create better content</div>
+        <div class="forwho-item"><span class="icon">🎯</span> You're tired of guessing and want a clear step-by-step system</div>
+        <div class="forwho-item"><span class="icon">🎯</span> You want to sell your own digital product by the end of 3 days</div>
+      </div>
+      <div class="forwho-card forwho-no">
+        <div class="forwho-title">❌ This Is NOT For You If...</div>
+        <div class="forwho-item"><span class="icon">🚫</span> You want overnight riches without any effort or action</div>
+        <div class="forwho-item"><span class="icon">🚫</span> You're not willing to spend 60–90 minutes per day for 3 days</div>
+        <div class="forwho-item"><span class="icon">🚫</span> You already have a fully monetized channel with a clear strategy</div>
+        <div class="forwho-item"><span class="icon">🚫</span> You want theory with no action steps or homework</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ CURRICULUM ═══════════ -->
+<section class="curriculum-section">
+  <div class="section-inner">
+    <div class="section-label">The Full Curriculum</div>
+    <h2 class="section-title">WHAT YOU'LL LEARN IN 3 DAYS</h2>
+    <p class="section-body">Each session is 60–90 minutes live on WhatsApp. You get recordings, notes and action tasks after every day.</p>
+
+    <div class="days-wrapper">
+      <!-- DAY 1 -->
+      <div class="day-card">
+        <div class="day-header day1-hdr">
+          <div class="day-number">01</div>
+          <div class="day-info">
+            <div class="day-tag">Day One</div>
+            <div class="day-title-text">FOUNDATION & SETUP</div>
+            <div class="day-sub-text">"From Zero to Channel Ready in One Day"</div>
+          </div>
+        </div>
+        <div class="day-modules">
+          <div class="module-item"><div class="module-num day1-num">M1</div><div class="module-text"><div class="mod-title">Mindset & The Faceless Opportunity</div><div class="mod-desc">Why faceless channels are exploding. What success looks like in 90 days.</div></div></div>
+          <div class="module-item"><div class="module-num day1-num">M2</div><div class="module-text"><div class="mod-title">Choosing Your Winning Niche</div><div class="mod-desc">3 faceless niches that monetize fastest. Niche validation using ChatGPT.</div></div></div>
+          <div class="module-item"><div class="module-num day1-num">M3</div><div class="module-text"><div class="mod-title">Full Channel Setup Masterclass</div><div class="mod-desc">Logo, banner, SEO description and channel sections — done right.</div></div></div>
+          <div class="module-item"><div class="module-num day1-num">M4</div><div class="module-text"><div class="mod-title">The Demonetization Danger Zone</div><div class="mod-desc">7 mistakes that kill channels. YouTube's rules decoded simply.</div></div></div>
+        </div>
+        <div class="day-hw day1-hw">
+          <span class="hw-label">📌 Day 1 Task:</span>
+          <span class="hw-text">Set up your full YouTube channel and share a screenshot in the WhatsApp group.</span>
+        </div>
+      </div>
+
+      <!-- DAY 2 -->
+      <div class="day-card">
+        <div class="day-header day2-hdr">
+          <div class="day-number">02</div>
+          <div class="day-info">
+            <div class="day-tag">Day Two</div>
+            <div class="day-title-text">AI CONTENT CREATION</div>
+            <div class="day-sub-text">"Create a Week of Content in One Hour"</div>
+          </div>
+        </div>
+        <div class="day-modules">
+          <div class="module-item"><div class="module-num day2-num">M5</div><div class="module-text"><div class="mod-title">The AI Content Creation System</div><div class="mod-desc">Idea → Script → Voiceover → Video → Thumbnail. The full workflow.</div></div></div>
+          <div class="module-item"><div class="module-num day2-num">M6</div><div class="module-text"><div class="mod-title">Free AI Tools Masterclass</div><div class="mod-desc">CapCut, ChatGPT, ElevenLabs, Canva AI and Leonardo — all free.</div></div></div>
+          <div class="module-item"><div class="module-num day2-num">M7</div><div class="module-text"><div class="mod-title">YouTube SEO & Algorithm Secrets</div><div class="mod-desc">Keywords, titles, descriptions and thumbnail psychology that drives clicks.</div></div></div>
+          <div class="module-item"><div class="module-num day2-num">M8</div><div class="module-text"><div class="mod-title">Repurposing for Maximum Reach</div><div class="mod-desc">Turn 1 YouTube video into 10 pieces of content using Opus Clip.</div></div></div>
+        </div>
+        <div class="day-hw day2-hw">
+          <span class="hw-label">📌 Day 2 Task:</span>
+          <span class="hw-text">Create and upload your first AI-generated video using tools taught today.</span>
+        </div>
+      </div>
+
+      <!-- DAY 3 -->
+      <div class="day-card">
+        <div class="day-header day3-hdr">
+          <div class="day-number">03</div>
+          <div class="day-info">
+            <div class="day-tag">Day Three</div>
+            <div class="day-title-text">MONETIZATION & DIGITAL PRODUCTS</div>
+            <div class="day-sub-text">"Turn Your Knowledge Into Income"</div>
+          </div>
+        </div>
+        <div class="day-modules">
+          <div class="module-item"><div class="module-num day3-num">M9</div><div class="module-text"><div class="mod-title">YouTube Monetization Roadmap</div><div class="mod-desc">Fastest path to 1K subs and 4K hours. Monetize before hitting YPP.</div></div></div>
+          <div class="module-item"><div class="module-num day3-num">M10</div><div class="module-text"><div class="mod-title">Create Your Own Digital Product</div><div class="mod-desc">Build a PDF guide or mini-course using AI in one day. Price and sell it.</div></div></div>
+          <div class="module-item"><div class="module-num day3-num">M11</div><div class="module-text"><div class="mod-title">Brand Deals & Sponsorships</div><div class="mod-desc">Attract sponsors even under 1K subs. Create your media kit. Cold pitch.</div></div></div>
+          <div class="module-item"><div class="module-num day3-num">M12</div><div class="module-text"><div class="mod-title">Your 30-Day Action Plan</div><div class="mod-desc">Exactly what to do week by week after this class ends.</div></div></div>
+        </div>
+        <div class="day-hw day3-hw">
+          <span class="hw-label">📌 Day 3 Task:</span>
+          <span class="hw-text">Create your first digital product and set up your Gumroad or Selar store.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ BONUSES ═══════════ -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">Exclusive Bonuses</div>
+    <h2 class="section-title">EVERYTHING YOU GET FOR $27</h2>
+    <p class="section-body">These bonuses alone are worth more than the price of the entire class.</p>
+
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <div class="bonus-emoji">🛠️</div>
+        <div class="bonus-title">Free AI Tools Vault</div>
+        <div class="bonus-desc">20+ free AI tools for creators, organized by category with direct links and quick-start guides.</div>
+        <div class="bonus-value"><s>$47</s> FREE</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">📅</div>
+        <div class="bonus-title">30-Day Content Calendar</div>
+        <div class="bonus-desc">Ready-to-use Notion/Google Sheets template with 30 days of ideas pre-filled for faceless channels.</div>
+        <div class="bonus-value"><s>$27</s> FREE</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">💬</div>
+        <div class="bonus-title">100 ChatGPT Prompt Packs</div>
+        <div class="bonus-desc">Done-for-you prompts for scripts, hooks, titles, descriptions and thumbnails. Copy, paste, create.</div>
+        <div class="bonus-value"><s>$37</s> FREE</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">👥</div>
+        <div class="bonus-title">Private WhatsApp Community</div>
+        <div class="bonus-desc">Lifetime access to Kuyik's private creator group. Weekly tips, Q&A and accountability with fellow creators.</div>
+        <div class="bonus-value"><s>$97</s> FREE</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">✅</div>
+        <div class="bonus-title">Demonetization Safety Checklist</div>
+        <div class="bonus-desc">One-page checklist to run before every upload — so you never accidentally violate YouTube's policies.</div>
+        <div class="bonus-value"><s>$17</s> FREE</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-emoji">🎬</div>
+        <div class="bonus-title">All 3-Day Session Recordings</div>
+        <div class="bonus-desc">Full replay of every session so you can rewatch, pause and apply everything at your own pace.</div>
+        <div class="bonus-value"><s>Priceless</s> FREE</div>
+      </div>
+    </div>
+
+    <div class="value-total">
+      <div>
+        <div class="total-label">Total Real-World Value</div>
+        <div class="total-was">$225+</div>
+      </div>
+      <div style="text-align:center">
+        <div class="total-label">You Pay Today</div>
+        <div class="total-price">$27</div>
+        <div class="total-seats">⚡ First 20 spots — then $47</div>
+      </div>
+      <div>
+        <a href="#buy" class="cta-btn" style="font-size:15px;padding:14px 32px;">Get Instant Access →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ HOW IT WORKS ═══════════ -->
+<section style="background:var(--dark2)">
+  <div class="section-inner">
+    <div class="section-label">The Process</div>
+    <h2 class="section-title">HOW IT WORKS</h2>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="step-dot">1</div><div class="step-content"><div class="step-title">Pay & Get Instant Access</div><div class="step-desc">Click the button, pay $27 on Selar. You'll be immediately redirected to join Kuyik's private WhatsApp class group.</div></div></div>
+      <div class="flow-step"><div class="step-dot">2</div><div class="step-content"><div class="step-title">Join the WhatsApp Group</div><div class="step-desc">Introduce yourself, confirm your spot and get the full 3-day schedule. All classes happen right inside the group.</div></div></div>
+      <div class="flow-step"><div class="step-dot">3</div><div class="step-content"><div class="step-title">Attend 3 Live Sessions</div><div class="step-desc">Show up for 60–90 minutes each day. Ask questions live. Get feedback directly from Kuyik in real time.</div></div></div>
+      <div class="flow-step"><div class="step-dot">4</div><div class="step-content"><div class="step-title">Do the Daily Homework</div><div class="step-desc">Each day has one simple action task. By Day 3 you will have a live YouTube channel, a video uploaded and a digital product ready to sell.</div></div></div>
+      <div class="flow-step"><div class="step-dot">5</div><div class="step-content"><div class="step-title">Get Recordings + Bonuses</div><div class="step-desc">After each session you get the full replay plus all bonuses. Come back anytime to rewatch and apply the lessons.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section class="testi-section">
+  <div class="section-inner">
+    <div class="section-label">Real Results</div>
+    <h2 class="section-title">WHAT CREATORS ARE SAYING</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"I set up my channel in one day. Kuyik made it so simple. I had no idea where to start before this class. Now I have 3 videos up already."</div>
+        <div class="testi-author"><div class="testi-avatar">TM</div><div><div class="testi-name">Temi M.</div><div class="testi-role">New YouTube Creator</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"The AI tools alone were worth 10x the price. I didn't know ElevenLabs was free. My faceless channel looks completely professional now."</div>
+        <div class="testi-author"><div class="testi-avatar">AO</div><div><div class="testi-name">Adesola O.</div><div class="testi-role">Content Creator, Lagos</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"By Day 3 I had created my first digital product and listed it on Selar. I made my first sale within 48 hours. This class changed everything."</div>
+        <div class="testi-author"><div class="testi-avatar">CK</div><div><div class="testi-name">Chidi K.</div><div class="testi-role">Digital Product Creator</div></div></div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:20px;font-size:12px;color:var(--gray);font-style:italic;">* Add your real student testimonials here before launching</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ ABOUT KUYIK ═══════════ -->
+<section class="about-section">
+  <div class="section-inner">
+    <div class="section-label">Your Instructor</div>
+    <h2 class="section-title">MEET KUYIK BASSEY</h2>
+    <div class="about-inner">
+      <div class="about-avatar-wrap">
+        <div class="about-avatar">KB</div>
+        <div class="about-handle">@KuyikBassey</div>
+        <div class="about-platform">Build and Brand with Kuyik</div>
+      </div>
+      <div>
+        <p class="about-body">
+          I'm <strong>Kuyik Bassey</strong> — an AI Educator, monetized YouTube creator and YouTube Growth Coach. I run the channel <strong>Build and Brand with Kuyik</strong> where I teach content creators how to use free AI tools to build faceless channels, grow faster and monetize smarter.
+        </p>
+        <br/>
+        <p class="about-body">
+          My YouTube channel is monetized. I have helped multiple creators set up and grow their channels. I don't teach theory — I teach exactly what I do, what works and what mistakes to avoid based on real experience.
+        </p>
+        <div class="about-stats">
+          <div class="astat"><div class="astat-num">✅</div><div class="astat-label">Monetized Creator</div></div>
+          <div class="astat"><div class="astat-num">12</div><div class="astat-label">Modules Taught</div></div>
+          <div class="astat"><div class="astat-num">100%</div><div class="astat-label">Free AI Tools</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">Got Questions?</div>
+    <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q">Do I need any experience to join?</div><div class="faq-a">Zero experience needed. This class is designed for complete beginners AND struggling creators. We start from scratch on Day 1.</div></div>
+      <div class="faq-item"><div class="faq-q">Do I need to spend money on AI tools?</div><div class="faq-a">No. Every tool taught in this class has a free plan. You will not need to spend any extra money beyond the class fee.</div></div>
+      <div class="faq-item"><div class="faq-q">What if I miss a live session?</div><div class="faq-a">No problem. Every session is recorded and sent to the group immediately after. You can catch up at your own pace and still complete all the tasks.</div></div>
+      <div class="faq-item"><div class="faq-q">Do I need to show my face on YouTube?</div><div class="faq-a">Absolutely not. This entire class is built around building a faceless YouTube channel. You will never need to show your face to succeed.</div></div>
+      <div class="faq-item"><div class="faq-q">How long is each session?</div><div class="faq-a">Each live session runs 60–90 minutes. That's less than 2 hours per day for 3 days. After that you have the recordings forever.</div></div>
+      <div class="faq-item"><div class="faq-q">When does the class start?</div><div class="faq-a">The next cohort date will be announced in the WhatsApp group after you join. Make sure you sign up early to secure your early bird price of $27.</div></div>
+      <div class="faq-item"><div class="faq-q">Is there a refund policy?</div><div class="faq-a">Due to the nature of digital products and live classes, all sales are final. However if you show up, do the work and don't get results, reach out directly and we'll make it right.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ BUY / PRICING ═══════════ -->
+<section class="pricing-section" id="buy">
+  <div class="section-inner">
+    <div class="section-label" style="text-align:center">Ready to Start?</div>
+    <h2 class="section-title" style="text-align:center">SECURE YOUR SPOT NOW</h2>
+
+    <div class="pricing-card">
+      <div class="pricing-title">Faceless YouTube &amp; AI Content Mastery</div>
+      <div class="pricing-sub">3-Day Live WhatsApp Class + Full Recordings + All Bonuses</div>
+
+      <div class="pricing-price">
+        <div class="price-was">Regular Price: $47</div>
+        <div class="price-now">$27</div>
+        <div class="price-note">⚡ Early Bird — First 20 spots only</div>
+      </div>
+
+      <div class="pricing-includes">
+        <div class="includes-title">Everything Included</div>
+        <div class="include-item"><div class="check">✓</div> 3-Day Live WhatsApp Class (60–90 min each)</div>
+        <div class="include-item"><div class="check">✓</div> All Session Recordings — rewatch anytime</div>
+        <div class="include-item"><div class="check">✓</div> Free AI Tools Vault (20+ tools)</div>
+        <div class="include-item"><div class="check">✓</div> 100 ChatGPT Prompt Packs</div>
+        <div class="include-item"><div class="check">✓</div> 30-Day Content Calendar Template</div>
+        <div class="include-item"><div class="check">✓</div> Demonetization Safety Checklist</div>
+        <div class="include-item"><div class="check">✓</div> Private WhatsApp Community — lifetime access</div>
+        <div class="include-item"><div class="check">✓</div> Direct Q&amp;A with Kuyik during live sessions</div>
+      </div>
+
+      <a href="YOUR_SELAR_LINK_HERE" class="cta-btn-large">👉 YES! I Want In — Pay $27 Now</a>
+      <div class="cta-sub">🔒 Secure payment via Selar · Instant WhatsApp access after purchase</div>
+
+      <div class="urgency-bar">
+        🔥 <strong>Warning:</strong> Price increases to $47 after first 20 spots are filled. Don't wait.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section class="final-cta">
+  <div class="final-cta-content">
+    <h2>DON'T STAY STUCK.<br/><span style="color:var(--teal)">START NOW.</span></h2>
+    <p>Every day you wait is another day without a channel, without income, and without results. Three days from now you could have a live faceless YouTube channel, a digital product and a plan. The only question is — will you take the step?</p>
+    <a href="#buy" class="cta-btn" style="font-size:17px;padding:18px 48px;">🚀 Secure My Spot for $27</a>
+    <div style="margin-top:20px;font-size:12px;color:rgba(255,255,255,0.3);">
+      Questions? DM @KuyikBassey on X/Twitter
+    </div>
+  </div>
+</section>
+
+<script>
+  // Animate elements on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, {threshold: 0.1});
+
+  document.querySelectorAll('.pain-card, .bonus-card, .day-card, .faq-item, .testi-card, .flow-step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
